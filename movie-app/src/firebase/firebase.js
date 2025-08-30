@@ -1,0 +1,17 @@
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+// Your web app's Firebase configuration
+const firebaseConfig = {
+	apiKey: "AIzaSyD6Bi4PjcIgQ6CMHinL8FBvpn6vCCMej8c",
+	authDomain: "first-project-8a9e5.firebaseapp.com",
+	projectId: "first-project-8a9e5",
+	storageBucket: "first-project-8a9e5.firebasestorage.app",
+	messagingSenderId: "581033742921",
+	appId: "1:581033742921:web:0b4e3b198934bbc5eaa598",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+export { app, auth };

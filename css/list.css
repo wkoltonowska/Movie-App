@@ -1,0 +1,14 @@
+.movieList__container {
+  display: flex;
+  padding: 10em 2em;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.list__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}/*# sourceMappingURL=list.css.map */

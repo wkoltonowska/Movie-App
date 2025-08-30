@@ -1,0 +1,100 @@
+@use "./colors" as *;
+
+.header {
+	z-index: 0;
+	position: relative;
+	background-image: url("../img/header_photo_small.jpg");
+	background-position: right;
+	background-size: cover;
+	height: 30em;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background-color: $header-bgc;
+		z-index: -1;
+	}
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		color: $light;
+		font-family: "Manjari", sans-serif;
+		padding: 1em;
+	}
+
+	&__text {
+		margin-bottom: 0.5em;
+		margin-top: 12em;
+		font-size: 1.4rem;
+		text-align: center;
+		&__your-list {
+			color: $main;
+		}
+	}
+
+	&__btn {
+		cursor: pointer;
+		margin: 0.5em;
+		font-size: 1rem;
+		background: none;
+		border: 0.2em solid $main;
+		border-radius: 25em;
+
+		&-left {
+			background-color: $main;
+		}
+
+		&:hover {
+			border: 0.2em solid $dark-main;
+		}
+		&-left:hover {
+			background-color: $dark-main;
+		}
+	}
+
+	&__link {
+		display: inline-block;
+		text-decoration: none;
+		color: $light;
+		padding: 0.3em 1.5em;
+	}
+}
+
+@media (min-width: 768px) {
+	.header {
+		background-image: url("../img/header_photo_medium.jpg");
+		height: 60vh;
+		width: 100%;
+
+		&__text {
+			margin-top: 15em;
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.header {
+		background-image: url("../img/header_photo_large.jpg");
+		height: 100vh;
+		width: 100%;
+		&__container {
+			display: flex;
+			align-items: flex-start;
+			justify-content: center;
+			width: 40em;
+			margin-left: 20em;
+		}
+		&__text {
+			margin-top: 12em;
+			font-size: 2rem;
+			text-align: left;
+		}
+		&__btn {
+			font-size: 1.5rem;
+		}
+	}
+}

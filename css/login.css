@@ -1,0 +1,90 @@
+.login__container {
+  margin-top: 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Manjari", sans-serif;
+  color: #fff;
+}
+.login__firstSection {
+  display: flex;
+  font-size: 1rem;
+  padding: 0.7em 5em 0.7em 1em;
+  background-color: rgba(217, 50, 80, 0.44);
+  border: none;
+  margin-bottom: 0.5em;
+  border-radius: 1em;
+  width: 100%;
+  padding: 0.2em 0.2em;
+  margin-bottom: 1.5em;
+}
+.login__firstSection::-moz-placeholder {
+  color: #fff;
+}
+.login__firstSection::placeholder {
+  color: #fff;
+}
+.login__firstSectionBtn {
+  cursor: pointer;
+  padding: 0.5em 2em;
+  width: 50%;
+  font-size: 1rem;
+  border-radius: 1em;
+  text-align: center;
+}
+.login__activeBtn {
+  background-color: #d93250;
+}
+.login__secondSection {
+  display: flex;
+  flex-direction: column;
+}
+.login__secondSection input {
+  font-size: 1rem;
+  padding: 0.7em 5em 0.7em 1em;
+  background-color: rgba(217, 50, 80, 0.44);
+  border: none;
+  margin-bottom: 0.5em;
+  border-radius: 1em;
+}
+.login__secondSection input::-moz-placeholder {
+  color: #fff;
+}
+.login__secondSection input::placeholder {
+  color: #fff;
+}
+.login__rememberMe-container {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.2em 0.5em 1.5em;
+  align-items: center;
+  width: 100%;
+}
+.login__rememberMe-container-box {
+  width: 1em;
+  height: 1em;
+  border: 0.1em #fff solid;
+  margin-right: 0.5em;
+}
+.login__rememberMe-container-text {
+  font-size: 0.7rem;
+}
+.login-btn {
+  font-size: 1rem;
+  padding: 0.7em 5em 0.7em 1em;
+  background-color: rgba(217, 50, 80, 0.44);
+  border: none;
+  margin-bottom: 0.5em;
+  border-radius: 1em;
+  cursor: pointer;
+  width: 100%;
+  color: white;
+  padding: 0.7em 5em;
+}
+.login-btn::-moz-placeholder {
+  color: #fff;
+}
+.login-btn::placeholder {
+  color: #fff;
+}/*# sourceMappingURL=Login.css.map */

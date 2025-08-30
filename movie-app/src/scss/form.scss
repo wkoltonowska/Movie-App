@@ -1,0 +1,80 @@
+@use "./colors" as *;
+
+@mixin form-style {
+	font-size: 1rem;
+	padding: 0.7em 5em 0.7em 1em;
+	background-color: $translucent-main;
+	border: none;
+	margin-bottom: 0.5em;
+	border-radius: 1em;
+	&::placeholder {
+		color: $light;
+	}
+}
+
+.form {
+	&__container {
+		margin-top: 10em;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		font-family: "Manjari", sans-serif;
+		color: $light;
+	}
+	&__firstSection {
+		display: flex;
+		@include form-style;
+		width: 100%;
+		padding: 0.2em 0.2em;
+		margin-bottom: 1.5em;
+	}
+	&__firstSectionBtn {
+		cursor: pointer;
+		padding: 0.5em 2em;
+		width: 50%;
+		font-size: 1rem;
+		border-radius: 1em;
+		text-align: center;
+	}
+
+	&__activeBtn {
+		background-color: $main;
+	}
+
+	&__secondSection {
+		display: flex;
+		flex-direction: column;
+
+		input {
+			@include form-style;
+		}
+	}
+
+	&__rememberMe-container {
+		display: flex;
+		justify-content: flex-start;
+		margin: 0.2em 0.5em;
+		align-items: center;
+		width: 100%;
+
+		&-box {
+			width: 1em;
+			height: 1em;
+			border: 0.1em $light solid;
+			margin-right: 0.5em;
+		}
+		&-text {
+			font-size: 0.7rem;
+		}
+	}
+
+	&-btn {
+		@include form-style;
+		cursor: pointer;
+		width: 100%;
+		color: white;
+		padding: 0.7em 5em;
+		margin-top: 1.5em;
+	}
+}

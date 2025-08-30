@@ -1,0 +1,14 @@
+@use "./colors" as *;
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	position: relative;
+	background-color: $dark;
+	color: $light;
+	font-family: "Manjari", sans-serif;
+}

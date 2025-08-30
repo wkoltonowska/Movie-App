@@ -1,0 +1,76 @@
+@use "./colors" as *;
+
+.movieList {
+	&__container {
+		display: flex;
+		padding: 7em 2em;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		&-mylist {
+			flex-direction: column;
+			padding: 2em;
+		}
+	}
+
+	&__heading {
+		text-transform: uppercase;
+		color: $main;
+		font-size: 2rem;
+
+		&-movies {
+			margin-top: 3.5em;
+		}
+	}
+}
+
+.list {
+	&__container {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 1em;
+	}
+}
+
+.fav {
+	&__container {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		border: none;
+		background-color: $fav-bgc;
+		color: $light;
+		font-family: "Manjari", sans-serif;
+		font-size: 1.2rem;
+		opacity: 0;
+		transition: opacity 0.3s;
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	&__item {
+		padding: 0.5em;
+	}
+
+	&__heart {
+		color: $main;
+	}
+}
+
+.favList {
+	&__container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+}

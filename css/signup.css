@@ -1,0 +1,90 @@
+.signup__container {
+  margin-top: 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Manjari", sans-serif;
+  color: #fff;
+}
+.signup__firstSection {
+  display: flex;
+  font-size: 1rem;
+  padding: 0.7em 5em 0.7em 1em;
+  background-color: rgba(217, 50, 80, 0.44);
+  border: none;
+  margin-bottom: 0.5em;
+  border-radius: 1em;
+  width: 100%;
+  padding: 0.2em 0.2em;
+}
+.signup__firstSection::-moz-placeholder {
+  color: #fff;
+}
+.signup__firstSection::placeholder {
+  color: #fff;
+}
+.signup__firstSectionBtn {
+  cursor: pointer;
+  padding: 0.5em 2em;
+  width: 50%;
+  font-size: 1rem;
+  border-radius: 1em;
+  text-align: center;
+}
+.signup__activeBtn {
+  background-color: #d93250;
+}
+.signup__secondSection {
+  display: flex;
+  flex-direction: column;
+}
+.signup__secondSection input {
+  font-size: 1rem;
+  padding: 0.7em 5em 0.7em 1em;
+  background-color: rgba(217, 50, 80, 0.44);
+  border: none;
+  margin-bottom: 0.5em;
+  border-radius: 1em;
+}
+.signup__secondSection input::-moz-placeholder {
+  color: #fff;
+}
+.signup__secondSection input::placeholder {
+  color: #fff;
+}
+.signup__rememberMe-container {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.2em 0.5em 1.5em;
+  align-items: center;
+  width: 100%;
+}
+.signup__rememberMe-container-box {
+  width: 1em;
+  height: 1em;
+  border: 0.1em #fff solid;
+  margin-right: 0.5em;
+}
+.signup__rememberMe-container-text {
+  font-size: 0.7rem;
+}
+.signup-btn {
+  font-size: 1rem;
+  padding: 0.7em 5em 0.7em 1em;
+  background-color: rgba(217, 50, 80, 0.44);
+  border: none;
+  margin-bottom: 0.5em;
+  border-radius: 1em;
+  cursor: pointer;
+  width: 100%;
+  color: white;
+  padding: 0.7em 5em;
+  margin-top: 1.5em;
+}
+.signup-btn::-moz-placeholder {
+  color: #fff;
+}
+.signup-btn::placeholder {
+  color: #fff;
+}/*# sourceMappingURL=signup.css.map */

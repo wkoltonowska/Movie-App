@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  position: relative;
+  background-color: #000;
+  color: #fff;
+  font-family: "Manjari", sans-serif;
+}/*# sourceMappingURL=app.css.map */

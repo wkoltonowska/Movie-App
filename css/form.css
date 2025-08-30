@@ -1,0 +1,91 @@
+.form__container {
+  margin-top: 10em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Manjari", sans-serif;
+  color: #fff;
+}
+.form__firstSection {
+  display: flex;
+  font-size: 1rem;
+  padding: 0.7em 5em 0.7em 1em;
+  background-color: rgba(217, 50, 80, 0.44);
+  border: none;
+  margin-bottom: 0.5em;
+  border-radius: 1em;
+  width: 100%;
+  padding: 0.2em 0.2em;
+  margin-bottom: 1.5em;
+}
+.form__firstSection::-moz-placeholder {
+  color: #fff;
+}
+.form__firstSection::placeholder {
+  color: #fff;
+}
+.form__firstSectionBtn {
+  cursor: pointer;
+  padding: 0.5em 2em;
+  width: 50%;
+  font-size: 1rem;
+  border-radius: 1em;
+  text-align: center;
+}
+.form__activeBtn {
+  background-color: #d93250;
+}
+.form__secondSection {
+  display: flex;
+  flex-direction: column;
+}
+.form__secondSection input {
+  font-size: 1rem;
+  padding: 0.7em 5em 0.7em 1em;
+  background-color: rgba(217, 50, 80, 0.44);
+  border: none;
+  margin-bottom: 0.5em;
+  border-radius: 1em;
+}
+.form__secondSection input::-moz-placeholder {
+  color: #fff;
+}
+.form__secondSection input::placeholder {
+  color: #fff;
+}
+.form__rememberMe-container {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.2em 0.5em;
+  align-items: center;
+  width: 100%;
+}
+.form__rememberMe-container-box {
+  width: 1em;
+  height: 1em;
+  border: 0.1em #fff solid;
+  margin-right: 0.5em;
+}
+.form__rememberMe-container-text {
+  font-size: 0.7rem;
+}
+.form-btn {
+  font-size: 1rem;
+  padding: 0.7em 5em 0.7em 1em;
+  background-color: rgba(217, 50, 80, 0.44);
+  border: none;
+  margin-bottom: 0.5em;
+  border-radius: 1em;
+  cursor: pointer;
+  width: 100%;
+  color: white;
+  padding: 0.7em 5em;
+  margin-top: 1.5em;
+}
+.form-btn::-moz-placeholder {
+  color: #fff;
+}
+.form-btn::placeholder {
+  color: #fff;
+}/*# sourceMappingURL=form.css.map */
