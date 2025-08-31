@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { MoviesContext } from "../contexts/MoviesContext";
+import { MoviesContext } from "../contexts/movieContext/MoviesContext.jsx";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/authContext/index.jsx";
+import { useAuth } from "../contexts/authContext/useAuth.jsx";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase/firebase.js";
 import { signOut } from "firebase/auth";
@@ -69,7 +69,9 @@ const Nav = () => {
 						</button>
 					) : (
 						<div className="logout__container">
-							<span>Hello! {currentUser.email} </span>
+							<span>
+								Hello! {currentUser?.displayName || currentUser?.email}{" "}
+							</span>
 							<button className="logout__btn" onClick={handleLogOutClick}>
 								Wyloguj
 							</button>

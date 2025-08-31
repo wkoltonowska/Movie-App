@@ -10,8 +10,8 @@ import Series from "./components/Series.jsx";
 import MyList from "./components/MyList.jsx";
 import NotFoundPage from "./components/NotFoundPage.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { AuthProvider } from "./contexts/authContext/index.jsx";
-import { MoviesProvider } from "./contexts/MoviesProvider.jsx";
+import { AuthProvider } from "./contexts/authContext/AuthProvider.jsx";
+import { MoviesProvider } from "./contexts/movieContext/MoviesProvider.jsx";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const router = createBrowserRouter([

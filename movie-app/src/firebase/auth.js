@@ -1,6 +1,6 @@
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
-
+import { updateProfile } from "firebase/auth";
 import { auth } from "./firebase";
 
 import {
@@ -29,6 +29,7 @@ export const doCreateUserWithEmailAndPasswordAndProfile = async (
 		password
 	);
 	const user = userCredential.user;
+	await updateProfile(user, { displayName: name });
 
 	// zapisujemy dodatkowe dane w Firestore
 	await setDoc(doc(db, "users", user.uid), {

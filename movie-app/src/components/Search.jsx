@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { MoviesContext } from "../contexts/MoviesContext";
+import { MoviesContext } from "../contexts/movieContext/MoviesContext";
 import search from "../img/search.png";
 
 const Search = () => {

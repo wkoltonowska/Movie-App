@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { MoviesContext } from "../contexts/MoviesContext";
+import { MoviesContext } from "../contexts/movieContext/MoviesContext";
 import Nav from "./Nav";
 import MovieList from "./MovieList";
 import AddFav from "./AddFav";
