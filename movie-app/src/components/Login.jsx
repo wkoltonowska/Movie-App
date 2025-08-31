@@ -20,6 +20,9 @@ const Login = () => {
 
 	const navigate = useNavigate();
 
+	if (userLoggedIn) {
+		return <Navigate to={"/home"} replace={true} />;
+	}
 	const handleSignUpClick = () => {
 		navigate("/signup");
 	};
@@ -72,7 +75,6 @@ const Login = () => {
 			<Nav />
 
 			<div className="form__container">
-				{/* {userLoggedIn && <Navigate to={"/home"} replace={true} />} */}
 				<form onSubmit={onSubmit}>
 					<div className="form__firstSection">
 						<div className="form__firstSectionBtn form__activeBtn">Login</div>

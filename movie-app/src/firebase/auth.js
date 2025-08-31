@@ -1,3 +1,6 @@
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase/firebase";
+
 import { auth } from "./firebase";
 
 import {
@@ -9,8 +12,33 @@ import {
 	updatePassword,
 } from "firebase/auth";
 
-export const doCreateUserWithEmailAndPassword = async (email, password) => {
-	return createUserWithEmailAndPassword(auth, email, password);
+// export const doCreateUserWithEmailAndPassword = async (email, password) => {
+// 	return createUserWithEmailAndPassword(auth, email, password);
+// };
+
+export const doCreateUserWithEmailAndPasswordAndProfile = async (
+	email,
+	password,
+	name,
+	surname
+) => {
+	// tworzymy usera w Firebase Auth
+	const userCredential = await createUserWithEmailAndPassword(
+		auth,
+		email,
+		password
+	);
+	const user = userCredential.user;
+
+	// zapisujemy dodatkowe dane w Firestore
+	await setDoc(doc(db, "users", user.uid), {
+		email: user.email,
+		name,
+		surname,
+		favourites: [],
+	});
+
+	return user; // zwracamy usera, jeśli chcemy go użyć w komponencie
 };
 
 export const doSignInWithEmailAndPassword = (email, password) => {

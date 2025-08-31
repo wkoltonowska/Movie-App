@@ -1,5 +1,6 @@
 import "../scss/form.scss";
-import { doCreateUserWithEmailAndPassword } from "../firebase/auth";
+//import { doCreateUserWithEmailAndPassword } from "../firebase/auth";
+import { doCreateUserWithEmailAndPasswordAndProfile } from "../firebase/auth";
 import { useAuth } from "../contexts/authContext/index.jsx";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
@@ -19,6 +20,10 @@ const SignUp = () => {
 	const { userLoggedIn } = useAuth();
 
 	const navigate = useNavigate();
+
+	if (userLoggedIn) {
+		return <Navigate to={"/home"} replace={true} />;
+	}
 
 	const handleLoginClick = () => {
 		navigate("/login");
@@ -41,7 +46,13 @@ const SignUp = () => {
 
 		if (!isRegistering) {
 			setIsRegistering(true);
-			await doCreateUserWithEmailAndPassword(email, password);
+			// await doCreateUserWithEmailAndPassword(email, password);
+			await doCreateUserWithEmailAndPasswordAndProfile(
+				email,
+				password,
+				name,
+				surname
+			);
 		}
 	};
 
@@ -50,7 +61,6 @@ const SignUp = () => {
 			<Nav />
 
 			<div className="form__container">
-				{/* {userLoggedIn && <Navigate to={"/home"} replace={true} />} */}
 				<form onSubmit={onSubmit}>
 					<div className="form__firstSection">
 						<div className="form__firstSectionBtn" onClick={handleLoginClick}>
