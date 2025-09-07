@@ -75,6 +75,7 @@ const SignUp = () => {
 			);
 		}
 		reset();
+		window.location.reload();
 	};
 
 	const onGoogleSignIn = async () => {

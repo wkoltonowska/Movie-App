@@ -1,15 +1,29 @@
-import { useContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { MoviesContext } from "../contexts/movieContext/MoviesContext";
 
 const Search = () => {
 	const { searchValue, setSearchValue } = useContext(MoviesContext);
 
 	const location = useLocation();
+	const navigate = useNavigate();
 
-	useEffect(() => {
-		setSearchValue("");
-	}, [location.pathname, setSearchValue]);
+	// useEffect(() => {
+	// 	setSearchValue("");
+	// }, [location.pathname, setSearchValue]);
+
+	const handleChange = (event) => {
+		const value = event.target.value;
+		setSearchValue(value);
+
+		if (
+			value &&
+			location.pathname !== "/movie" &&
+			location.pathname !== "/series"
+		) {
+			navigate("/movies");
+		}
+	};
 
 	return (
 		<div className="search">
@@ -22,7 +36,7 @@ const Search = () => {
 				placeholder="Type to search..."
 				autoComplete="off"
 				value={searchValue}
-				onChange={(event) => setSearchValue(event.target.value)}
+				onChange={handleChange}
 			/>
 		</div>
 	);
