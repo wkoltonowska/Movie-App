@@ -7,10 +7,8 @@ import { auth } from "../firebase/firebase.js";
 import { signOut } from "firebase/auth";
 
 import Search from "./Search";
+import Navbar from "./Navbar.jsx";
 import "../scss/nav.scss";
-
-import login from "../img/login.png";
-import burger from "../img/burger-bar.png";
 
 const Nav = () => {
 	const { userLoggedIn, currentUser } = useAuth();
@@ -59,13 +57,8 @@ const Nav = () => {
 				</ul>
 				<div className="nav__second-container">
 					{!userLoggedIn ? (
-						<button className="login">
-							<img
-								src={login}
-								alt="login"
-								className="login__img"
-								onClick={handleLoginClick}
-							/>
+						<button className="login__btn" onClick={handleLoginClick}>
+							<i className="bi bi-person"></i>
 						</button>
 					) : (
 						<div className="logout__container">
@@ -73,15 +66,13 @@ const Nav = () => {
 								Hello! {currentUser?.displayName || currentUser?.email}{" "}
 							</span>
 							<button className="logout__btn" onClick={handleLogOutClick}>
-								Wyloguj
+								<i className="bi bi-box-arrow-right"></i>
 							</button>
 						</div>
 					)}
 
 					<Search searchValue={searchValue} setSearchValue={setSearchValue} />
-					<button className="burgerBtn">
-						<img src={burger} alt="burger icon" className="burgerBtn__img" />
-					</button>
+					<Navbar />
 				</div>
 			</div>
 		</nav>

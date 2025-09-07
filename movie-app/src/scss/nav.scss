@@ -66,37 +66,71 @@
 }
 
 .burgerBtn {
-	cursor: pointer;
-	background: none;
-	border: none;
-	&__img {
-		height: 2em;
+	&__container {
+		height: 1.5em;
+		width: 1.5em;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-between;
+		cursor: pointer;
+	}
+	&__item {
+		width: 1.5em;
+		height: 0.15em;
+		background-color: $main;
+		border-radius: 0.5em;
+
+		&-clicked:nth-child(1) {
+			transform: translateY(-0.71em) rotate(45deg) translate(0.75em, 1.25em);
+			transition: ease-out 0.5s;
+		}
+		&-clicked:nth-child(2) {
+			transform: scale(0);
+			transition: ease-out 0.5s;
+		}
+		&-clicked:nth-child(3) {
+			transform: translateY(0.71em) rotate(135deg) translate(-0.5em, 1em);
+			transition: ease-out 0.5s;
+		}
+		&-unclicked:nth-child(0) {
+			transform: rotate(0) translate(0);
+			transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+		}
 	}
 }
 
+.hidden {
+	display: none;
+}
+
+.visible {
+	display: inherit;
+}
+
+// navbar animation
+
 .login {
-	cursor: pointer;
-	margin: 1em 1em 1em 2.5em;
-	display: flex;
-	height: 2em;
-	background: none;
-	border: none;
-	&__img {
-		height: 2em;
+	&__btn {
+		cursor: pointer;
+		background: none;
+		border: none;
+		color: $main;
+		font-size: 1.7rem;
+		margin: 0.5em;
+		padding: 0.2em;
 	}
 }
 
 .search {
-	cursor: pointer;
 	display: none;
 	border: 0.2em $main solid;
 	border-radius: 1.5em;
-	padding: 0.2em;
-	//width: 12em;
 	background: none;
 	&__img {
 		height: 1em;
-		margin: 0.5em;
+		margin: 0.7em;
+		color: $main;
 	}
 	&__input {
 		width: 100%;
@@ -104,6 +138,27 @@
 		color: $light;
 		border: none;
 		outline: none;
+		padding: 0.7em 1em 0.7em 0.5em;
+	}
+}
+
+.logout {
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	&__btn {
+		cursor: pointer;
+		margin-right: 0.3em;
+		background: none;
+		color: $main;
+		border: none;
+		padding: 0.5em;
+		font-size: 1.5rem;
+		&:hover {
+			color: $dark-main;
+		}
 	}
 }
 
@@ -126,7 +181,7 @@
 	.nav__container {
 		display: flex;
 	}
-	.burgerBtn {
+	.burgerBtn__container {
 		display: none;
 	}
 	.search {

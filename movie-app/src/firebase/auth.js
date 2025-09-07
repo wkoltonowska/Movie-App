@@ -10,11 +10,8 @@ import {
 	sendPasswordResetEmail,
 	signInWithEmailAndPassword,
 	updatePassword,
+	signInWithPopup,
 } from "firebase/auth";
-
-// export const doCreateUserWithEmailAndPassword = async (email, password) => {
-// 	return createUserWithEmailAndPassword(auth, email, password);
-// };
 
 export const doCreateUserWithEmailAndPasswordAndProfile = async (
 	email,
@@ -46,12 +43,11 @@ export const doSignInWithEmailAndPassword = (email, password) => {
 	return signInWithEmailAndPassword(auth, email, password);
 };
 
-// export const doSignInWithGoogle = async () => {
-// 	const provider = new GoogleAuthProvider();
-// 	const result = await signInWithPopup(auth, provider);
-// 	const user = result.user;
-// 	return result;
-// };
+export const doSignInWithGoogle = async () => {
+	const provider = new GoogleAuthProvider();
+	const result = await signInWithPopup(auth, provider);
+	return result.user;
+};
 
 export const doSignOut = () => {
 	return auth.signOut();
@@ -67,6 +63,6 @@ export const doPasswordChange = (password) => {
 
 export const doSendEmailVerification = () => {
 	return sendEmailVerification(auth.currentUser, {
-		url: `$window.location.origin}/home`,
+		url: `${window.location.origin}/home`,
 	});
 };

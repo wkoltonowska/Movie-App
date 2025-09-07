@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { MoviesContext } from "../contexts/movieContext/MoviesContext";
-import search from "../img/search.png";
 
 const Search = () => {
 	const { searchValue, setSearchValue } = useContext(MoviesContext);
@@ -14,13 +13,14 @@ const Search = () => {
 
 	return (
 		<div className="search">
-			<img src={search} alt="search" className="search__img" />
+			<i className="bi bi-search search__img"></i>
 			<input
 				className="search__input"
 				type="text"
 				name="search"
 				id="search"
 				placeholder="Type to search..."
+				autoComplete="off"
 				value={searchValue}
 				onChange={(event) => setSearchValue(event.target.value)}
 			/>

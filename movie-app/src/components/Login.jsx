@@ -1,22 +1,37 @@
 import "../scss/form.scss";
 import {
 	doSignInWithEmailAndPassword,
-	//doSignInWithGoogle,
+	doSignInWithGoogle,
 } from "../firebase/auth";
 import { useAuth } from "../contexts/authContext/useAuth.jsx";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import Nav from "./Nav";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const Login = () => {
 	const { userLoggedIn } = useAuth();
 
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const schema = z.object({
+		email: z.string().email(),
+		password: z.string().min(8),
+	});
+
+	const {
+		register,
+		handleSubmit,
+		setError,
+		reset,
+		formState: { errors, isSubmitting },
+	} = useForm({
+		defaultValues: { email: "" },
+		resolver: zodResolver(schema),
+	});
 
 	const [isSigningIn, setIsSigningIn] = useState(false);
-	const [errorMessage, setErrorMessage] = useState({ email: "", password: "" });
 
 	const navigate = useNavigate();
 
@@ -27,55 +42,45 @@ const Login = () => {
 		navigate("/signup");
 	};
 
-	const onSubmit = async (e) => {
-		e.preventDefault();
-		setErrorMessage({ email: "", password: "" });
-		if (!email.includes("@")) {
-			setErrorMessage((prev) => ({ ...prev, email: "Email must include @" }));
-			return;
+	const onSubmit = async (data) => {
+		try {
+			await new Promise((resolve) => setTimeout(resolve, 1000));
+			console.log(data);
+		} catch (error) {
+			console.error(error);
+			setError("root", { message: "This email is already taken" });
 		}
-		// if (password.length < 8) {
-		// 	setErrorMessage({
-		// 		...errorMessage,
-		// 		password: "Password must be at least 8 chars",
-		// 	});
-		// 	return;
-		// }
-
 		if (!isSigningIn) {
 			setIsSigningIn(true);
 			try {
-				await doSignInWithEmailAndPassword(email, password);
+				await doSignInWithEmailAndPassword(data.email, data.password);
 			} catch (err) {
-				// np. FirebaseAuthError
 				console.error(err);
 
-				setErrorMessage((prev) => ({
-					...prev,
-					password: "Incorrect email or password",
-				}));
+				setError("password", { message: "Incorrect email or password" });
 				setIsSigningIn(false);
 			}
 		}
+		reset();
 	};
 
-	// const onGoogleSignIn = (e) => {
-	// 	e.preventDefault();
-	// 	if (!isSigningIn) {
-	// 		setIsSigningIn(true);
-	// 		doSignInWithGoogle().catch((err) => {
-	// 			console.error(err);
-	// 			setIsSigningIn(false);
-	// 		});
-	// 	}
-	// };
+	const onGoogleSignIn = async () => {
+		try {
+			await doSignInWithGoogle();
+			console.log("Google login success ✅");
+			navigate("/home"); // jeśli chcesz od razu przekierować
+		} catch (err) {
+			console.error("Google login error ❌", err);
+			setError("root", { message: "Google sign-in failed" });
+		}
+	};
 
 	return (
 		<>
 			<Nav />
 
 			<div className="form__container">
-				<form onSubmit={onSubmit}>
+				<form onSubmit={handleSubmit(onSubmit)}>
 					<div className="form__firstSection">
 						<div className="form__firstSectionBtn form__activeBtn">Login</div>
 						<div className=" form__firstSectionBtn" onClick={handleSignUpClick}>
@@ -84,40 +89,37 @@ const Login = () => {
 					</div>
 					<div className="form__secondSection">
 						<input
+							{...register("email")}
 							className="emailInput"
-							type="email"
+							type="text"
 							placeholder="Enter your email"
 							autoComplete="email"
-							required
-							value={email}
-							onChange={(e) => {
-								setEmail(e.target.value);
-							}}
 						/>
+						{errors.email && (
+							<div className="error">{errors.email.message}</div>
+						)}
 						<input
+							{...register("password")}
 							className="passwordInput"
 							type="password"
 							placeholder="Enter your password"
 							autoComplete="current-password"
-							required
-							value={password}
-							onChange={(e) => {
-								setPassword(e.target.value);
-							}}
 						/>
+						{errors.password && (
+							<div className="error">{errors.password.message}</div>
+						)}
 					</div>
-					{errorMessage.email && (
-						<span className="error">{errorMessage.email}</span>
-					)}
-					{errorMessage.password && (
-						<span className="error">{errorMessage.password}</span>
-					)}
+
 					<div className="form__rememberMe-container">
 						<div className="form__rememberMe-container-box"></div>
 						<div className="form__rememberMe-container-text">Remember me</div>
 					</div>
-					<button className="form-btn" type="submit" disabled={isSigningIn}>
-						Login
+					<button className="form-btn" type="submit" disabled={isSubmitting}>
+						{isSubmitting ? "Loading..." : "Login"}
+					</button>
+					{errors.root && <div className="error">{errors.root.message}</div>}
+					<button className="form-btn" type="button" onClick={onGoogleSignIn}>
+						Sign in with Google
 					</button>
 				</form>
 			</div>
