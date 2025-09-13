@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { MoviesContext } from "../contexts/movieContext/MoviesContext.jsx";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext/useAuth.jsx";
@@ -13,8 +13,12 @@ import "../scss/nav.scss";
 const Nav = () => {
 	const { userLoggedIn, currentUser } = useAuth();
 	const { searchValue, setSearchValue } = useContext(MoviesContext);
-
+	const [isMenuClicked, setIsMenuClicked] = useState(false);
 	const navigate = useNavigate();
+
+	const updateMenu = () => {
+		setIsMenuClicked(!isMenuClicked);
+	};
 
 	const handleLoginClick = () => {
 		navigate("/login");
@@ -32,14 +36,15 @@ const Nav = () => {
 	];
 
 	return (
-		<nav className="nav">
+		<nav className={`nav ${!isMenuClicked ? "nav-extended" : ""}`}>
 			<div className="wrapper">
 				<div>
 					<Link to="/" className="logo nav__container__item-red">
 						MOVIE-APP
 					</Link>
 				</div>
-				<ul className="nav__container">
+				<ul
+					className={`nav__container ${isMenuClicked ? "visible" : "hidden"}`}>
 					<li>
 						<Link
 							to="/home"
@@ -70,9 +75,12 @@ const Nav = () => {
 							</button>
 						</div>
 					)}
-
-					<Search searchValue={searchValue} setSearchValue={setSearchValue} />
-					<Navbar />
+					<Search
+						searchValue={searchValue}
+						setSearchValue={setSearchValue}
+						className={` ${isMenuClicked ? "visible" : "hidden"}`}
+					/>
+					<Navbar isMenuClicked={isMenuClicked} updateMenu={updateMenu} />
 				</div>
 			</div>
 		</nav>

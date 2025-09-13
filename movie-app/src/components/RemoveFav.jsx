@@ -1,8 +1,8 @@
 const RemoveFav = () => {
 	return (
-		<button className="fav__container">
-			<span className="fav__item">Remove from favourites</span>
-			<i class="bi bi-heartbreak-fill fav__heart"></i>
+		<button className="btnFav__container">
+			<span className="btnFav__item">Remove from favourites</span>
+			<i className="bi bi-heartbreak-fill btnFav__heart"></i>
 		</button>
 	);
 };

@@ -2,12 +2,15 @@
 
 @mixin form-style {
 	font-size: 1rem;
+	font-family: "Manjari", sans-serif;
 	padding: 0.7em 5em 0.7em 1em;
 	background-color: $translucent-main;
 	color: $light;
 	border: none;
 	margin-bottom: 0.5em;
 	border-radius: 1em;
+	max-width: 350px;
+
 	&::placeholder {
 		color: $light;
 	}
@@ -22,6 +25,7 @@
 		align-items: center;
 		font-family: "Manjari", sans-serif;
 		color: $light;
+		padding: 2em;
 	}
 	&__firstSection {
 		display: flex;
@@ -70,17 +74,25 @@
 		}
 	}
 
-	&-btn {
+	&__btn {
 		@include form-style;
 		cursor: pointer;
 		width: 100%;
-		color: white;
+		background-color: $dark-main;
 		padding: 0.7em 5em;
 		margin-top: 1.5em;
+
+		&-google {
+			margin-top: 0.2em;
+		}
+		&:hover {
+			background-color: $translucent-main;
+		}
 	}
 
 	&__error {
+		color: $gray;
 		font-size: 0.8rem;
-		padding: 0.2em;
+		padding: 0.1em 0.7em 0.7em;
 	}
 }

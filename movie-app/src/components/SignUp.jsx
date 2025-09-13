@@ -110,7 +110,9 @@ const SignUp = () => {
 							className="nameInput"
 							placeholder="Enter your name"
 						/>
-						{errors.name && <div className="error">{errors.name.message}</div>}
+						{errors.name && (
+							<div className="form__error">{errors.name.message}</div>
+						)}
 						<input
 							{...register("surname")}
 							type="text"
@@ -118,7 +120,7 @@ const SignUp = () => {
 							placeholder="Enter your surname"
 						/>
 						{errors.surname && (
-							<div className="error">{errors.surname.message}</div>
+							<div className="form__error">{errors.surname.message}</div>
 						)}
 						<input
 							{...register("email")}
@@ -128,7 +130,7 @@ const SignUp = () => {
 							autoComplete="email"
 						/>
 						{errors.email && (
-							<div className="error">{errors.email.message}</div>
+							<div className="form__error">{errors.email.message}</div>
 						)}
 						<input
 							{...register("password")}
@@ -138,7 +140,7 @@ const SignUp = () => {
 							autoComplete="current-password"
 						/>
 						{errors.password && (
-							<div className="error">{errors.password.message}</div>
+							<div className="form__error">{errors.password.message}</div>
 						)}
 						<input
 							{...register("confirmPassword")}
@@ -148,15 +150,22 @@ const SignUp = () => {
 							autoComplete="current-password"
 						/>
 						{errors.confirmPassword && (
-							<div className="error">{errors.confirmPassword.message}</div>
+							<div className="form__error">
+								{errors.confirmPassword.message}
+							</div>
 						)}
 					</div>
 
-					<button className="form-btn" type="submit" disabled={isSubmitting}>
+					<button className="form__btn" type="submit" disabled={isSubmitting}>
 						Sign Up
 					</button>
-					{errors.root && <div className="error">{errors.root.message}</div>}
-					<button className="form-btn" type="button" onClick={onGoogleSignIn}>
+					{errors.root && (
+						<div className="form__error">{errors.root.message}</div>
+					)}
+					<button
+						className="form__btn form__btn-google"
+						type="button"
+						onClick={onGoogleSignIn}>
 						Sign in with Google
 					</button>
 				</form>

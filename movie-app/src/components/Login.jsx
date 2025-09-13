@@ -96,7 +96,7 @@ const Login = () => {
 							autoComplete="email"
 						/>
 						{errors.email && (
-							<div className="error">{errors.email.message}</div>
+							<div className="form__error">{errors.email.message}</div>
 						)}
 						<input
 							{...register("password")}
@@ -106,19 +106,24 @@ const Login = () => {
 							autoComplete="current-password"
 						/>
 						{errors.password && (
-							<div className="error">{errors.password.message}</div>
+							<div className="form__error">{errors.password.message}</div>
 						)}
 					</div>
 
-					<div className="form__rememberMe-container">
+					{/* <div className="form__rememberMe-container">
 						<div className="form__rememberMe-container-box"></div>
 						<div className="form__rememberMe-container-text">Remember me</div>
-					</div>
-					<button className="form-btn" type="submit" disabled={isSubmitting}>
+					</div> */}
+					<button className="form__btn" type="submit" disabled={isSubmitting}>
 						{isSubmitting ? "Loading..." : "Login"}
 					</button>
-					{errors.root && <div className="error">{errors.root.message}</div>}
-					<button className="form-btn" type="button" onClick={onGoogleSignIn}>
+					{errors.root && (
+						<div className="form__error">{errors.root.message}</div>
+					)}
+					<button
+						className="form__btn form__btn-google"
+						type="button"
+						onClick={onGoogleSignIn}>
 						Sign in with Google
 					</button>
 				</form>

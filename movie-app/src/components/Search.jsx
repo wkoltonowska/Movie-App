@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MoviesContext } from "../contexts/movieContext/MoviesContext";
 
-const Search = () => {
+const Search = ({ className = "" }) => {
 	const { searchValue, setSearchValue } = useContext(MoviesContext);
 
 	const location = useLocation();
@@ -26,8 +26,7 @@ const Search = () => {
 	};
 
 	return (
-		<div className="search">
-			<i className="bi bi-search search__img"></i>
+		<div className={`search ${className}`}>
 			<input
 				className="search__input"
 				type="text"
@@ -38,6 +37,7 @@ const Search = () => {
 				value={searchValue}
 				onChange={handleChange}
 			/>
+			<i className="bi bi-search search__icon"></i>
 		</div>
 	);
 };
