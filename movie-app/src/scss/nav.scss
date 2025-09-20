@@ -8,7 +8,7 @@
 	width: 100%;
 	height: 100vh;
 	background-color: $nav-mobile-bgc;
-	font-family: "Manjari", sans-serif;
+	font-family: "Quicksand", sans-serif;
 	font-weight: 400;
 	display: flex;
 	justify-content: center;
@@ -49,6 +49,10 @@
 					color: $dark-main;
 				}
 			}
+			&-active {
+				color: $main-active;
+				font-weight: 500;
+			}
 		}
 	}
 	&__second-container {
@@ -72,6 +76,8 @@
 	font-family: "Koulen", sans-serif;
 	font-size: 1.5rem;
 	cursor: pointer;
+	white-space: nowrap;
+	margin-right: 1em;
 }
 
 .burgerBtn {
@@ -90,21 +96,22 @@
 		background-color: $main;
 		border-radius: 0.5em;
 
+		transition: transform 0.5s ease-in-out;
+
 		&-clicked:nth-child(1) {
 			transform: translateY(-0.55em) rotate(45deg) translate(0.75em, 1.25em);
-			transition: ease-out 0.5s;
 		}
 		&-clicked:nth-child(2) {
 			transform: scale(0);
-			transition: ease-out 0.5s;
 		}
 		&-clicked:nth-child(3) {
 			transform: translateY(0.55em) rotate(135deg) translate(-0.5em, 1em);
-			transition: ease-out 0.5s;
 		}
-		&-unclicked:nth-child(0) {
-			transform: rotate(0) translate(0);
-			transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+
+		&-unclicked:nth-child(1),
+		&-unclicked:nth-child(2),
+		&-unclicked:nth-child(3) {
+			transform: none;
 		}
 	}
 }
@@ -116,8 +123,6 @@
 .visible {
 	display: flex;
 }
-
-// navbar animation
 
 .login {
 	&__btn {
@@ -144,7 +149,7 @@
 	background: none;
 	&__icon {
 		height: 1em;
-		margin: 0.7em 0.7em 0.7em 0.3em;
+		margin: 0.7em 1.5em 0.7em 0.3em;
 		color: $main;
 	}
 	&__input {
@@ -153,8 +158,7 @@
 		color: $light;
 		border: none;
 		outline: none;
-		padding: 0.7em 0.5em 0.7em 1em;
-		//padding: 0.3em 0.3em 0.3em 0.3em;
+		padding: 1em 0.5em 1em 1.7em;
 	}
 }
 

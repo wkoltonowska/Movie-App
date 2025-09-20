@@ -120,9 +120,12 @@ export const MoviesProvider = ({ children }) => {
 		loadFavourites();
 	}, [user]);
 
+	const isFavourite = (movie) => {
+		return favourites.some((fav) => fav.imdbID === movie.imdbID);
+	};
+
 	const addFavMovie = async (movie) => {
-		const alreadyExists = favourites.some((fav) => fav.imdbID === movie.imdbID);
-		if (alreadyExists) return;
+		if (isFavourite(movie)) return;
 
 		if (user) {
 			const ref = doc(db, "users", user.uid);
@@ -166,6 +169,7 @@ export const MoviesProvider = ({ children }) => {
 				removeFavMovie,
 				getMovieRequest,
 				setType,
+				isFavourite,
 			}}>
 			{children}
 		</MoviesContext.Provider>

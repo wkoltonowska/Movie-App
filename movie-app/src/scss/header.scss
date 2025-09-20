@@ -7,7 +7,6 @@
 	background-position: right;
 	background-size: cover;
 	height: 30em;
-
 	&::before {
 		content: "";
 		position: absolute;
@@ -22,11 +21,12 @@
 		align-items: center;
 		justify-content: center;
 		color: $light;
-		font-family: "Manjari", sans-serif;
+		font-family: "Quicksand", sans-serif;
 		padding: 1em;
 	}
 
 	&__text {
+		font-weight: 400;
 		margin-bottom: 0.5em;
 		margin-top: 12em;
 		font-size: 1.4rem;
@@ -37,12 +37,13 @@
 	}
 
 	&__btn {
-		font-family: "Manjari", sans-serif;
+		font-family: "Quicksand", sans-serif;
 		cursor: pointer;
-		margin: 0.5em;
-		font-size: 1rem;
+		margin-top: 0.5em;
+		margin-right: 0.5em;
+		font-size: 1.2rem;
 		background: none;
-		border: 0.2em solid $main;
+		border: 0.15em solid $main;
 		border-radius: 25em;
 
 		&-left {
@@ -50,7 +51,7 @@
 		}
 
 		&:hover {
-			border: 0.2em solid $dark-main;
+			border: 0.15em solid $dark-main;
 		}
 		&-left:hover {
 			background-color: $dark-main;
@@ -95,7 +96,7 @@
 			text-align: left;
 		}
 		&__btn {
-			font-size: 1.5rem;
+			font-size: 1.7rem;
 		}
 	}
 }

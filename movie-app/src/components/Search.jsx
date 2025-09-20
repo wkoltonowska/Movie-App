@@ -19,7 +19,8 @@ const Search = ({ className = "" }) => {
 		if (
 			value &&
 			location.pathname !== "/movie" &&
-			location.pathname !== "/series"
+			location.pathname !== "/series" &&
+			event.key === "Enter"
 		) {
 			navigate("/movies");
 		}
@@ -36,6 +37,7 @@ const Search = ({ className = "" }) => {
 				autoComplete="off"
 				value={searchValue}
 				onChange={handleChange}
+				onKeyDown={handleChange}
 			/>
 			<i className="bi bi-search search__icon"></i>
 		</div>

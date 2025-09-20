@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { MoviesContext } from "../contexts/movieContext/MoviesContext.jsx";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext/useAuth.jsx";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { auth } from "../firebase/firebase.js";
 import { signOut } from "firebase/auth";
 
@@ -22,6 +22,9 @@ const Nav = () => {
 
 	const handleLoginClick = () => {
 		navigate("/login");
+		if (location.pathname === "/login") {
+			window.location.reload();
+		}
 	};
 
 	const handleLogOutClick = async () => {
@@ -39,24 +42,30 @@ const Nav = () => {
 		<nav className={`nav ${!isMenuClicked ? "nav-extended" : ""}`}>
 			<div className="wrapper">
 				<div>
-					<Link to="/" className="logo nav__container__item-red">
+					<NavLink to="/" className="logo nav__container__item-red">
 						MOVIE-APP
-					</Link>
+					</NavLink>
 				</div>
 				<ul
 					className={`nav__container ${isMenuClicked ? "visible" : "hidden"}`}>
 					<li>
-						<Link
+						<NavLink
 							to="/home"
 							className=" nav__container__item nav__container__item-red ">
 							HOME
-						</Link>
+						</NavLink>
 					</li>
 					{menuItems.map((item) => (
 						<li key={item.path}>
-							<Link to={item.path} className=" nav__container__item ">
+							<NavLink
+								to={item.path}
+								className={({ isActive }) =>
+									`nav__container__item ${
+										isActive ? "nav__container__item-active" : ""
+									}`
+								}>
 								{item.label}
-							</Link>
+							</NavLink>
 						</li>
 					))}
 				</ul>
@@ -67,7 +76,7 @@ const Nav = () => {
 						</button>
 					) : (
 						<div className="logout__container">
-							<span>
+							<span className="logout__text">
 								Hello! {currentUser?.displayName || currentUser?.email}{" "}
 							</span>
 							<button className="logout__btn" onClick={handleLogOutClick}>

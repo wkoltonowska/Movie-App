@@ -2,13 +2,12 @@ import { useContext } from "react";
 import { MoviesContext } from "../contexts/movieContext/MoviesContext";
 
 import Nav from "./Nav";
-import RemoveFav from "./RemoveFav";
+
 import MovieList from "./MovieList";
 import "../scss/list.scss";
 
 const MyList = () => {
-	const { searchValue, setSearchValue, favourites, removeFavMovie } =
-		useContext(MoviesContext);
+	const { searchValue, setSearchValue, favourites } = useContext(MoviesContext);
 
 	const getFavouritesByType = (type) => {
 		return favourites.filter((fav) => fav.Type === type);
@@ -24,21 +23,13 @@ const MyList = () => {
 					Favourite movies
 				</h2>
 				<div className="favList__container">
-					<MovieList
-						movies={movieFavouriteList}
-						favComponent={RemoveFav}
-						handleFavouritesClick={removeFavMovie}
-					/>
+					<MovieList movies={movieFavouriteList} />
 				</div>
 			</div>
 			<div className="movieList__container movieList__container-mylist">
 				<h2 className="movieList__heading">Favourite series</h2>
 				<div className="favList__container">
-					<MovieList
-						movies={seriesFavouriteList}
-						favComponent={RemoveFav}
-						handleFavouritesClick={removeFavMovie}
-					/>
+					<MovieList movies={seriesFavouriteList} />
 				</div>
 			</div>
 		</>
