@@ -8,21 +8,25 @@ const Search = ({ className = "" }) => {
 	const location = useLocation();
 	const navigate = useNavigate();
 
-	// useEffect(() => {
-	// 	setSearchValue("");
-	// }, [location.pathname, setSearchValue]);
-
 	const handleChange = (event) => {
-		const value = event.target.value;
-		setSearchValue(value);
+		setSearchValue(event.target.value.trimStart());
+	};
 
+	const handleSearch = () => {
+		const value = searchValue.trim();
 		if (
 			value &&
 			location.pathname !== "/movie" &&
-			location.pathname !== "/series" &&
-			event.key === "Enter"
+			location.pathname !== "/series"
 		) {
+			setSearchValue(value);
 			navigate("/movies");
+		}
+	};
+
+	const handleKeyDown = (event) => {
+		if (event.key === "Enter") {
+			handleSearch();
 		}
 	};
 
@@ -37,9 +41,11 @@ const Search = ({ className = "" }) => {
 				autoComplete="off"
 				value={searchValue}
 				onChange={handleChange}
-				onKeyDown={handleChange}
+				onKeyDown={handleKeyDown}
 			/>
-			<i className="bi bi-search search__icon"></i>
+			<button className="search__btn" onClick={handleSearch}>
+				<i className="bi bi-search search__icon"></i>
+			</button>
 		</div>
 	);
 };

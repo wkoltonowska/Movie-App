@@ -160,6 +160,11 @@
 		outline: none;
 		padding: 1em 0.5em 1em 1.7em;
 	}
+	&__btn {
+		cursor: pointer;
+		border: none;
+		background: none;
+	}
 }
 
 .logout {
