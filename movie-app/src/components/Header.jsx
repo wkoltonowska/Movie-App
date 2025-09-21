@@ -26,7 +26,3 @@ export const Header = () => {
 	);
 };
 export default Header;
-
-{
-	/* <img src={headerPhoto} alt="Games os Thrones" className="header__img" /> */
-}

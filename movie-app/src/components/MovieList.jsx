@@ -10,8 +10,6 @@ const MovieList = ({ movies }) => {
 	const { addFavMovie, removeFavMovie, isFavourite } =
 		useContext(MoviesContext);
 
-	//const FavComponent = props.favComponent;
-
 	const [isOpen, setIsOpen] = useState(false);
 
 	const onClose = () => {
@@ -27,10 +25,11 @@ const MovieList = ({ movies }) => {
 					<div className="list__container" key={movie.imdbID}>
 						<div className="list__item">
 							<img
+								className="list__img"
 								src={movie.Poster !== "N/A" ? movie.Poster : noImg}
 								alt={movie.Title}
 							/>
-
+							{movie.Poster !== "N/A" ? "" : <div className="list__noImg">{movie.Title}</div>}
 							<div
 								onClick={() => {
 									if (alreadyFav) {

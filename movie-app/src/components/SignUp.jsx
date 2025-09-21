@@ -81,10 +81,10 @@ const SignUp = () => {
 	const onGoogleSignIn = async () => {
 		try {
 			await doSignInWithGoogle();
-			console.log("Google login success ✅");
-			navigate("/home"); // jeśli chcesz od razu przekierować
+			console.log("Google login success");
+			navigate("/home");
 		} catch (err) {
-			console.error("Google login error ❌", err);
+			console.error("Google login error", err);
 			setError("root", { message: "Google sign-in failed" });
 		}
 	};

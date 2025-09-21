@@ -67,10 +67,10 @@ const Login = () => {
 	const onGoogleSignIn = async () => {
 		try {
 			await doSignInWithGoogle();
-			console.log("Google login success ✅");
-			navigate("/home"); // jeśli chcesz od razu przekierować
+			console.log("Google login success");
+			navigate("/home");
 		} catch (err) {
-			console.error("Google login error ❌", err);
+			console.error("Google login error", err);
 			setError("root", { message: "Google sign-in failed" });
 		}
 	};
@@ -110,10 +110,6 @@ const Login = () => {
 						)}
 					</div>
 
-					{/* <div className="form__rememberMe-container">
-						<div className="form__rememberMe-container-box"></div>
-						<div className="form__rememberMe-container-text">Remember me</div>
-					</div> */}
 					<button className="form__btn" type="submit" disabled={isSubmitting}>
 						{isSubmitting ? "Loading..." : "Login"}
 					</button>

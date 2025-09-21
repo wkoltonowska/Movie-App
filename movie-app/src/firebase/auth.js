@@ -19,7 +19,6 @@ export const doCreateUserWithEmailAndPasswordAndProfile = async (
 	name,
 	surname
 ) => {
-	// tworzymy usera w Firebase Auth
 	const userCredential = await createUserWithEmailAndPassword(
 		auth,
 		email,
@@ -27,8 +26,6 @@ export const doCreateUserWithEmailAndPasswordAndProfile = async (
 	);
 	const user = userCredential.user;
 	await updateProfile(user, { displayName: name });
-
-	// zapisujemy dodatkowe dane w Firestore
 	await setDoc(doc(db, "users", user.uid), {
 		email: user.email,
 		name,
@@ -36,7 +33,7 @@ export const doCreateUserWithEmailAndPasswordAndProfile = async (
 		favourites: [],
 	});
 
-	return user; // zwracamy usera, jeśli chcemy go użyć w komponencie
+	return user; 
 };
 
 export const doSignInWithEmailAndPassword = (email, password) => {

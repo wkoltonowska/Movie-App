@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { MoviesContext } from "../contexts/movieContext/MoviesContext";
 
 import Nav from "./Nav";
-
 import MovieList from "./MovieList";
 import "../scss/list.scss";
 

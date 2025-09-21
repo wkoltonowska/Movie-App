@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { MoviesContext } from "./MoviesContext";
-
 import { auth, db } from "../../firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import {
@@ -19,9 +18,8 @@ export const MoviesProvider = ({ children }) => {
 	const [type, setType] = useState("");
 	const [user, setUser] = useState(null);
 
-	// pobieranie filmów/seriali z API
+	
 	const getMovieRequest = async (searchValue, type) => {
-		//if (!searchValue) return;
 		const url = `http://www.omdbapi.com/?s=${searchValue}&type=${type}&apikey=b40963e5`;
 		const response = await fetch(url);
 		const responseJson = await response.json();
@@ -48,43 +46,14 @@ export const MoviesProvider = ({ children }) => {
 		return () => unsubscribe();
 	}, []);
 
-	// // ładowanie ulubionych z localStorage
-	// useEffect(() => {
-	// 	const movieFavourites = JSON.parse(
-	// 		localStorage.getItem("react-movie-app-favourites")
-	// 	);
-	// 	if (movieFavourites) {
-	// 		setFavourites(movieFavourites);
-	// 	}
-	// }, []);
 
 	const saveToLocalStorage = (items) => {
 		localStorage.setItem("react-movie-app-favourites", JSON.stringify(items));
 	};
 
-	// const addFavMovie = (movie) => {
-	// 	const alreadyExists = favourites.some((fav) => fav.imdbID === movie.imdbID);
-
-	// 	if (!alreadyExists) {
-	// 		console.log(movie);
-	// 		const newFavouriteList = [...favourites, movie];
-	// 		setFavourites(newFavouriteList);
-	// 		saveToLocalStorage(newFavouriteList);
-	// 	}
-	// };
-
-	// const removeFavMovie = (movie) => {
-	// 	const newFavouriteList = favourites.filter(
-	// 		(favourite) => favourite.imdbID !== movie.imdbID
-	// 	);
-	// 	setFavourites(newFavouriteList);
-	// 	saveToLocalStorage(newFavouriteList);
-	// };
-
 	useEffect(() => {
 		const loadFavourites = async () => {
 			if (user) {
-				// 🔥 jeśli zalogowany → bierzemy ulubione z Firestore
 				const ref = doc(db, "users", user.uid);
 				const snap = await getDoc(ref);
 
@@ -95,7 +64,6 @@ export const MoviesProvider = ({ children }) => {
 					setFavourites([]);
 				}
 
-				// przeniesienie z localStorage (opcjonalne)
 				const localFavs =
 					JSON.parse(localStorage.getItem("react-movie-app-favourites")) || [];
 				if (localFavs.length > 0) {
@@ -107,7 +75,6 @@ export const MoviesProvider = ({ children }) => {
 					localStorage.removeItem("react-movie-app-favourites");
 				}
 			} else {
-				// ❌ niezalogowany → używamy localStorage
 				const movieFavourites = JSON.parse(
 					localStorage.getItem("react-movie-app-favourites")
 				);
